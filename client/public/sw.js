@@ -1,194 +1,119 @@
 /**
- * Service Worker - PWA Support & Offline Mode
- * Caches assets for offline access and improves performance
+ * Service Worker - PWA (network-first for pages, cache-first for static assets)
  */
 
-const CACHE_NAME = 'decor-carpi-v1';
-const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/favicon.ico',
-];
+const CACHE_NAME = 'decor-carpi-v3';
 
-// Install event - cache assets
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Caching assets');
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.log('[SW] Cache error:', err);
-      });
-    })
-  );
   self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('[SW] Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then((names) =>
+      Promise.all(names.map((n) => n !== CACHE_NAME && caches.delete(n)))
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+function isNavigationRequest(request) {
+  return (
+    request.mode === 'navigate' ||
+    request.destination === 'document' ||
+    (request.method === 'GET' && request.headers.get('accept')?.includes('text/html'))
+  );
+}
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
+  if (request.method !== 'GET') return;
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  const url = new URL(request.url);
+
+  if (url.pathname.startsWith('/api/')) {
+    event.respondWith(
+      fetch(request).catch(() => caches.match(request))
+    );
     return;
   }
 
-  // Skip API calls - always fetch from network
-  if (request.url.includes('/api/')) {
+  // HTML / navigare: mereu rețea întâi (evită pagină albă din cache vechi)
+  if (isNavigationRequest(request)) {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          // Cache successful API responses
           if (response.ok) {
-            const cache = caches.open(CACHE_NAME);
-            cache.then((c) => c.put(request, response.clone()));
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((c) => c.put(request, clone));
           }
           return response;
         })
-        .catch(() => {
-          // Return cached response if network fails
-          return caches.match(request);
-        })
+        .catch(() => caches.match(request).then((r) => r || caches.match('/index.html')))
     );
     return;
   }
 
-  // For static assets, use cache-first strategy
-  event.respondWith(
-    caches.match(request).then((response) => {
-      if (response) {
-        return response;
-      }
-
-      return fetch(request).then((response) => {
-        // Cache successful responses
-        if (response.ok && request.method === 'GET') {
-          const cache = caches.open(CACHE_NAME);
-          cache.then((c) => c.put(request, response.clone()));
-        }
-        return response;
-      });
-    })
-  );
-});
-
-// Message event - skip waiting
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
-
-// ─── Web Push Notifications ─────────────────────────────────────────────────
-
-// Event: Push Notification
-self.addEventListener('push', (event) => {
-  console.log('[SW] Push notification received:', event);
-
-  if (!event.data) {
-    console.log('[SW] No data in push event');
+  // JS, CSS, imagini: cache apoi rețea
+  if (url.pathname.startsWith('/assets/') || url.pathname.startsWith('/manus-storage/')) {
+    event.respondWith(
+      caches.match(request).then(
+        (cached) =>
+          cached ||
+          fetch(request).then((response) => {
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then((c) => c.put(request, clone));
+            }
+            return response;
+          })
+      )
+    );
     return;
   }
+});
 
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+});
+
+self.addEventListener('push', (event) => {
+  if (!event.data) return;
   try {
     const data = event.data.json();
-    console.log('[SW] Push data:', data);
-
-    const options = {
-      body: data.body || 'Nuova notifica',
-      icon: data.icon || '/icon-192x192.png',
-      badge: data.badge || '/badge-72x72.png',
-      tag: data.tag || 'default',
-      data: {
-        type: data.type || 'general_update',
-        ...data.data,
-      },
-      requireInteraction: data.requireInteraction || false,
-    };
-
     event.waitUntil(
-      self.registration.showNotification(data.title || 'Notificare', options)
+      self.registration.showNotification(data.title || 'Decor Carpi', {
+        body: data.body || 'Nuova notifica',
+        icon: data.icon || '/icon-192.png',
+        badge: data.badge || '/icon-192.png',
+        tag: data.tag || 'default',
+        data: { type: data.type || 'general_update', ...data.data },
+      })
     );
-  } catch (error) {
-    console.error('[SW] Error processing push notification:', error);
+  } catch {
     event.waitUntil(
-      self.registration.showNotification('Nuova notifica', {
-        body: 'Hai una nuova notifica',
-        icon: '/icon-192x192.png',
+      self.registration.showNotification('Decor Carpi', {
+        body: 'Nuova notifica',
+        icon: '/icon-192.png',
       })
     );
   }
 });
 
-// Event: Notification Click
 self.addEventListener('notificationclick', (event) => {
-  console.log('[SW] Notification clicked:', event.notification.tag);
-
   event.notification.close();
-
-  const data = event.notification.data || {};
-  const action = event.action;
-
-  if (action === 'close') {
-    console.log('[SW] Notification closed by user');
-    return;
-  }
-
-  const urlToOpen = getUrlForNotificationType(data.type, data);
+  if (event.action === 'close') return;
+  const baseUrl = self.location.origin;
+  const type = event.notification.data?.type;
+  let urlToOpen = baseUrl;
+  if (type === 'contact_response') urlToOpen = `${baseUrl}/?section=contact`;
+  else if (type === 'preventivo_accepted' || type === 'preventivo_rejected') urlToOpen = `${baseUrl}/preventives`;
 
   event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
-      for (let i = 0; i < clientList.length; i++) {
-        const client = clientList[i];
-        if (client.url === urlToOpen && 'focus' in client) {
-          return client.focus();
-        }
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+      for (const client of list) {
+        if (client.url.startsWith(baseUrl) && 'focus' in client) return client.focus();
       }
-      if (clients.openWindow) {
-        return clients.openWindow(urlToOpen);
-      }
+      return clients.openWindow(urlToOpen);
     })
   );
 });
-
-// Event: Notification Close
-self.addEventListener('notificationclose', (event) => {
-  console.log('[SW] Notification closed:', event.notification.tag);
-});
-
-/**
- * Obține URL-ul corespunzător tipului de notificare
- */
-function getUrlForNotificationType(type, data) {
-  const baseUrl = self.location.origin;
-
-  switch (type) {
-    case 'contact_response':
-      return `${baseUrl}/?section=contact`;
-    case 'preventivo_accepted':
-      return `${baseUrl}/preventives`;
-    case 'preventivo_rejected':
-      return `${baseUrl}/preventives`;
-    case 'general_update':
-      return baseUrl;
-    default:
-      return baseUrl;
-  }
-}

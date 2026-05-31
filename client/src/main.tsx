@@ -11,10 +11,12 @@ import { getLoginUrl } from "./const";
 import { useServiceWorker } from "./hooks/useServiceWorker";
 import "./index.css";
 
-// Register service worker for PWA support
+// PWA: înlocuiește cache-ul vechi care putea arăta pagină albă
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(err => {
-    console.log('[SW] Registration failed:', err);
+  navigator.serviceWorker.getRegistrations().then((regs) => {
+    regs.forEach((r) => r.unregister());
+  }).finally(() => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
   });
 }
 

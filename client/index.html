@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <title>Decor Carpi - Vizualizator Texturi</title>
+    <meta name="description" content="Visualizza texture decorative e stucco sui muri della tua stanza con AI. Decor Carpi, Carpi, Italia." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#c9a227" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Decor Carpi" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="stucco, texture decorative, visualizzatore AI, Carpi, Italia, decorare muri" />
+    <meta name="author" content="Decor Carpi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Italian" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Decor Carpi - Vizualizator Texturi AI" />
+    <meta property="og:description" content="Fotografa la tua stanza e vedi come appare con le texture decorative Decor Carpi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://decorcarpi.manus.space" />
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Decor Carpi",
+      "description": "Visualizzatore texture decorative e stucco con AI",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carpi",
+        "addressLocality": "Carpi",
+        "postalCode": "41012",
+        "addressCountry": "IT"
+      },
+      "telephone": "+39",
+      "email": "decorcarpi@gmail.com",
+      "url": "https://decorcarpi.manus.space"
+    }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Umami Analytics (Manus Platform) -->
+    <script
+      defer
+      src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'page_path': window.location.pathname,
+        'page_title': document.title
+      });
+    </script>
+  </body>
+</html>

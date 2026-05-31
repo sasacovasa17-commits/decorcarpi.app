@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "app": "Decor Carpi - Stucchi Decorativi",
+    "version": "2.0.0",
+    "generatedAt": "2026-05-31T05:45:00Z",
+    "totalAssets": 56,
+    "totalSize": "~150MB",
+    "description": "Complete media inventory for decorcarpi application"
+  },
+  "categories": {
+    "textures": {
+      "description": "Decorative stucco textures (23 total)",
+      "count": 23,
+      "location": "client/public/manus-storage/"
+    },
+    "certifications": {
+      "description": "Professional certifications and diplomas (4 total)",
+      "count": 4,
+      "files": ["diploma_1_opt_7ac28aef.png", "diploma_2_opt_1db48360.png", "diploma_3_opt_c0eda9c5.png", "diploma_4_opt_ae01b1ff.png"]
+    },
+    "portfolio": {
+      "description": "Portfolio images and videos (7 total: 4 images + 3 videos)",
+      "images": 4,
+      "videos": 3,
+      "videoFiles": ["10690_43f34869.mp4", "10696_a802b7ee.mp4", "10750_48f942e1.mp4"]
+    },
+    "gallery": {
+      "description": "WhatsApp gallery and antimuffa images (9 total)",
+      "count": 9
+    }
+  },
+  "instructions": {
+    "localSetup": "1. Extract ZIP\n2. Run: npm install (or pnpm install)\n3. Copy .env.example to .env and fill API keys\n4. Run: npm run dev\n5. Open: http://localhost:3000",
+    "pwaInstall": "1. Open app in browser\n2. Click 'Installa App' button\n3. Confirm installation\n4. App will appear on home screen",
+    "deployment": "1. Push code to GitHub\n2. Deploy to Render/Vercel\n3. Set environment variables\n4. Enable PWA in production",
+    "mediaUsage": "All media files are in client/public/manus-storage/\nUpdate image paths in code if needed:\n- server/routers.ts: TEXTURES array\n- client/src/pages/Home.tsx: Image URLs\n- client/src/pages/InspirazioneDCPage.tsx: Gallery images"
+  }
+}

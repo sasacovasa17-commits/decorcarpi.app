@@ -1,0 +1,373 @@
+/* 
+ * DecorCarpi - Dark Luxury Artisan Theme
+ * Design: Dark background (#0a0a0a), gold accents (#c9a227), warm white text (#e8e8e8)
+ * Typography: Playfair Display (titles) + Raleway (nav) + Open Sans (body)
+ * Layout: Full-width alternating product sections, centered nav
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+}
+
+:root {
+  --radius: 0.25rem;
+  --gold: #c9a227;
+  --gold-dim: rgba(201, 162, 39, 0.35);
+  --background: #FFF8F0;
+  --foreground: #5C4033;
+  --card: #FFFFFF;
+  --card-foreground: #5C4033;
+  --popover: #FFFFFF;
+  --popover-foreground: #5C4033;
+  --primary: #c9a227;
+  --primary-foreground: #5C4033;
+  --secondary: #F5E6D3;
+  --secondary-foreground: #5C4033;
+  --muted: #E8D7C3;
+  --muted-foreground: #8B6F47;
+  --accent: #c9a227;
+  --accent-foreground: #5C4033;
+  --destructive: #E74C3C;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8D7C3;
+  --input: #FFFFFF;
+  --ring: #c9a227;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #5C4033;
+  --sidebar-primary: #c9a227;
+  --sidebar-primary-foreground: #5C4033;
+  --sidebar-accent: #F5E6D3;
+  --sidebar-accent-foreground: #5C4033;
+  --sidebar-border: #E8D7C3;
+  --sidebar-ring: #c9a227;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Gold separator line */
+  .gold-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  /* Product image hover effect */
+  .product-image-wrapper {
+    overflow: hidden;
+  }
+
+  .product-image-wrapper img {
+    transition: transform 0.6s ease;
+  }
+
+  .product-image-wrapper:hover img {
+    transform: scale(1.04);
+  }
+
+  /* Gold text highlight */
+  .text-gold {
+    color: var(--gold);
+  }
+
+  /* Nav link hover */
+  .nav-link {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: oklch(0.85 0.005 65);
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    color: var(--gold);
+  }
+
+  /* Cookie banner */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: oklch(0.12 0.003 285);
+    border-top: 1px solid var(--gold-dim);
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Pulse-glow animation for selected room icons */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(240, 217, 96, 0.8), inset 0 0 10px rgba(240, 217, 96, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(240, 217, 96, 1), inset 0 0 15px rgba(240, 217, 96, 0.5);
+    }
+  }
+
+  /* Fade-in animation for sections */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  /* Fade-in animation for logo */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeInScale 0.6s ease-out forwards;
+  }
+
+  /* Sticky header */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  }
+
+  /* Logo hover effect */
+  .logo-hover:hover {
+    color: #d4b84f;
+    transition: color 0.3s ease;
+  }
+
+  /* Scroll reveal (JS-driven) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Language selector in header */
+  .header-language-selector {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .header-language-selector button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .header-language-selector button.active {
+    background-color: #c9a227;
+    color: #0a0a0a;
+  }
+
+  .header-language-selector button:not(.active) {
+    background-color: rgba(201, 162, 39, 0.1);
+    color: #c9a227;
+    border: 1px solid rgba(201, 162, 39, 0.3);
+  }
+}
+
+
+  /* Pulse-glow animation for selected room icons */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(240, 217, 96, 0.8), inset 0 0 10px rgba(240, 217, 96, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(240, 217, 96, 1), inset 0 0 15px rgba(240, 217, 96, 0.5);
+    }
+  }
+
+  /* Fade-in animation for generated images */
+  @keyframes fadeInImage {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeInImage {
+    animation: fadeInImage 0.8s ease-out forwards;
+  }
+
+  /* Smooth step transition */
+  @keyframes slideInStep {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slideInStep {
+    animation: slideInStep 0.5s ease-out forwards;
+  }
+
+  /* Button hover glow */
+  @keyframes buttonGlow {
+    0%, 100% {
+      box-shadow: 0 0 0 rgba(201, 162, 39, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(201, 162, 39, 0.5);
+    }
+  }
+
+  .button-glow:hover {
+    animation: buttonGlow 0.6s ease-in-out;
+  }
+
+  /* Loading spinner */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  /* Pulse animation for loading state */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }

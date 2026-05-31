@@ -116,7 +116,7 @@ export const TEXTURES = [
     name: "Marmorino",
     description: "Intonaco di marmo veneziano, superficie lucida e pregiata",
     category: "stucco",
-    imageUrl: "/manus-storage/10540_37f051da.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/marmurino-enhanced_4c2c6afd.png",
     promptKeyword: "marmorino INTONACO MARMO VENEZIANO con superficie liscia e lucida. Venature di marmo sottili e regolari, distribuite uniformemente su TUTTA la parete. Tonalità avorio calde e naturali con riflessi coerenti. Finitura elegante con profondità moderata e ombre morbide. Effetto marmorizzato autentico e consistente.",
   },
   {
@@ -164,7 +164,7 @@ export const TEXTURES = [
     name: "Effetto Ruggine",
     description: "Texture patinata con effetto ruggine, aspetto antico e sofisticato",
     category: "stucco",
-    imageUrl: "/manus-storage/effetto-ruggine-texture_86535040.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/perlato-real_3ac71f2a.jpg",
     promptKeyword: "rust effect decorative plaster, oxidized patina finish with copper and blue tones, antique weathered appearance with natural oxidation patterns",
   },
   {
@@ -172,7 +172,7 @@ export const TEXTURES = [
     name: "Mappa Mondo Oro",
     description: "Texture patinata con effetto mappa mondo, accenti dorati su sfondo grigio-beige, aspetto naturale e sofisticato",
     category: "stucco",
-    imageUrl: "/manus-storage/mappa-mondo-oro-texture_7314c7b1.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/mappa-mondo-enhanced_13c1f23e.png",
     promptKeyword: "mappa mondo gold decorative plaster with organic map-like patterns, golden accents on grey-beige background, natural patina finish with sophisticated texture",
   },
   {
@@ -180,7 +180,7 @@ export const TEXTURES = [
     name: "Pietra Spaccata",
     description: "Texture pietra naturale spaccata con linee di frattura, tonalità grigio-bianche con accenti scuri, aspetto robusto e naturale",
     category: "stucco",
-    imageUrl: "/manus-storage/pietra-spaccata-texture_888cb678.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/pietra-spaccata-real_8224ab3e.jpg",
     promptKeyword: "split stone decorative plaster with natural fracture lines, grey-white tones with dark accents, robust and natural appearance",
   },
   {
@@ -188,7 +188,7 @@ export const TEXTURES = [
     name: "Stencil Elegante",
     description: "Texture stencil sofisticata con motivi decorativi complessi, pizzo, fiori, stelle, pattern geometrici su sfondo beige-crema",
     category: "stucco",
-    imageUrl: "/manus-storage/stencil-elegante-texture_4a9bcbe5.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/stencil-real_1aa8a383.jpg",
     promptKeyword: "elegant stencil decorative plaster with sophisticated motifs, lace patterns, flowers, stars, geometric patterns on beige-cream background",
   },
   {
@@ -196,7 +196,7 @@ export const TEXTURES = [
     name: "Pietra Spaccata Lusso",
     description: "Texture pietra naturale spaccata con aspetto lussuoso, tonalità beige-marrone con sfumature grigie, rilievo profondo e naturale",
     category: "stucco",
-    imageUrl: "/manus-storage/pietra-spaccata-lusso-texture_d0a89023.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/pietra-spaccata-real_8224ab3e.jpg",
     promptKeyword: "luxury split stone decorative plaster with natural appearance, beige-brown tones with grey shades, deep relief and authentic texture",
   },
   {
@@ -204,7 +204,7 @@ export const TEXTURES = [
     name: "Pietra Spaccata (Effetto Venato)",
     description: "Pietra naturale spaccata con vene eleganti, aspetto robusto e naturale",
     category: "stucco",
-    imageUrl: "/manus-storage/IMG_20260501_105555_ab7a5412.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/pietra-spaccata-real_8224ab3e.jpg",
     promptKeyword: "split stone decorative plaster with elegant veins, natural robust appearance, beige-grey tones",
   },
   {
@@ -212,7 +212,7 @@ export const TEXTURES = [
     name: "Geometrie Materiche",
     description: "Finiture decorative con effetto crepe e linee geometriche, aspetto sofisticato e moderno",
     category: "stucco",
-    imageUrl: "/manus-storage/IMG_20260501_105622_d091e263.jpg",
+    imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/effetto-cimento-real_a6e8f9b1.jpg",
     promptKeyword: "geometric decorative plaster with crack effect and geometric lines, sophisticated modern appearance, textured finish",
   },
 ];

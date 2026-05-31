@@ -454,22 +454,22 @@ function CertificationsSection() {
   const certs = [
     { 
       title: "Certificat Antimuffa", 
-      image: "/manus-storage/diploma_2_opt_1db48360.png",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/zokRXgi6ILBO_a6b32a93.jpg",
       alt: "Certificato specializzazione trattamenti Antimuffa e protezione biologica pareti"
     },
     { 
       title: "Certificat Vernici Professionali", 
-      image: "/manus-storage/diploma_3_opt_c0eda9c5.png",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/ULwliGo9w3Dg_344edeff.jpg",
       alt: "Certificazione vernici professionali e tecniche di pittura decorativa avanzate"
     },
     { 
       title: "Certificat Qualità", 
-      image: "/manus-storage/diploma_4_opt_ae01b1ff.png",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/8WnrzSbgVLfl_7d492611.jpg",
       alt: "Certificato garanzia qualità e standard internazionali servizi decorativi Decor Carpi"
     },
     { 
       title: "Certificat Stucchi Decorativi", 
-      image: "/manus-storage/diploma_1_opt_7ac28aef.png",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/5WjbvFPD2wjC_e4a0a6aa.jpg",
       alt: "Certificazione professionale per applicazione Stucchi decorativi e finiture murali di qualità"
     }
   ];
@@ -658,14 +658,14 @@ function HomeScreen({ onNavigate, onNavigateWithTexture, isPro }: {
           </p>
           <div className="grid grid-cols-1 gap-3">
             {[
-              { type: "image", src: "/manus-storage/10689_2d2dcfc1.jpg", title: "Bagno Lussuoso - Effetto Marmorino", desc: "Finitura elegante con specchio illuminato" },
-              { type: "video", src: "/manus-storage/10690_43f34869.mp4", title: "Applicazione Texture - Dettagli", desc: "Guarda come viene applicata la texture" },
-              { type: "image", src: "/manus-storage/10691_a991479b.jpg", title: "Parete Decorativa - Effetto Stencil", desc: "Motivi decorativi sofisticati" },
-              { type: "image", src: "/manus-storage/10692_5f79b721.jpg", title: "Parete Principale - Effetto Naturale", desc: "Texture ruvida e sofisticata" },
-              { type: "image", src: "/manus-storage/10693_57d2e45a.jpg", title: "Elemento Decorativo - Pietra Spaccata", desc: "Finitura lussuosa con dettagli" },
-              { type: "video", src: "/manus-storage/10750_48f942e1.mp4", title: "Video Applicazione - Parte 1", desc: "Processo di applicazione passo dopo passo" },
-              { type: "video", src: "/manus-storage/10755_30693428.mp4", title: "Video Applicazione - Parte 2", desc: "Dettagli della finitura finale" },
-              { type: "video", src: "/manus-storage/10696_a802b7ee.mp4", title: "Video Applicazione - Parte 3", desc: "Risultato finale e qualità" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/zokRXgi6ILBO_a6b32a93.jpg", title: "Bagno Lussuoso - Effetto Marmorino", desc: "Finitura elegante con specchio illuminato" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/marmurino-enhanced_4c2c6afd.png", title: "Applicazione Texture - Dettagli", desc: "Guarda come viene applicata la texture" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/stencil-real_1aa8a383.jpg", title: "Parete Decorativa - Effetto Stencil", desc: "Motivi decorativi sofisticati" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/pelle-elefante-real_97d5e5fe.jpg", title: "Parete Principale - Effetto Naturale", desc: "Texture ruvida e sofisticata" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/pietra-spaccata-real_8224ab3e.jpg", title: "Elemento Decorativo - Pietra Spaccata", desc: "Finitura lussuosa con dettagli" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/effetto-cimento-real_a6e8f9b1.jpg", title: "Lavoro Realizzato - Parte 1", desc: "Processo di applicazione passo dopo passo" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/mappa-mondo-enhanced_13c1f23e.png", title: "Lavoro Realizzato - Parte 2", desc: "Dettagli della finitura finale" },
+              { type: "image", src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/5WjbvFPD2wjC_e4a0a6aa.jpg", title: "Lavoro Realizzato - Parte 3", desc: "Risultato finale e qualità" },
             ].map((item, idx) => (
               <div key={idx} className="rounded-sm overflow-hidden border" style={{ borderColor: "rgba(201,162,39,0.2)", background: "rgba(255,255,255,0.02)" }}>
                 {item.type === "image" ? (
@@ -2824,12 +2824,12 @@ function CalculatorVerniceScreen({ onBack, t }: {
   };
 
   const VERNICE_IMAGES = [
-    "/manus-storage/IMG-20240605-WA0003_0c59a0b0.jpg",
-    "/manus-storage/IMG-20240605-WA0004_f2f08979.jpg",
-    "/manus-storage/IMG-20240605-WA0005_fc2abda4.jpg",
-    "/manus-storage/IMG-20241024-WA0008_34a3ef17.jpg",
-    "/manus-storage/IMG-20241024-WA0010_f80c712f.jpg",
-    "/manus-storage/IMG-20241024-WA0027_72a4b22e.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/5WjbvFPD2wjC_e4a0a6aa.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/8WnrzSbgVLfl_7d492611.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/ULwliGo9w3Dg_344edeff.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/zokRXgi6ILBO_a6b32a93.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/img_1_e9b1b085.jpg",
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/img_2_c24d0cc7.jpg",
   ];
 
   // Calcolo: Opzione A (Lunghezza × Altezza) sau Opzione B (m² direttamente)
@@ -3513,9 +3513,9 @@ function CalculatorAntimuffaScreen({ onBack, t }: {
           </label>
           <div className="grid grid-cols-3 gap-2">
             {[
-              "/manus-storage/Antimuffa-1_10f4e372.webp",
-              "/manus-storage/Antimuffa-2_d72f1b76.jpg",
-              "/manus-storage/Antimuffa-3_a0a26316.jpg",
+              "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/hero-banner-v2-NwecKWHDwJvSatLmHpEj4e.webp",
+              "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/perlato-real_3ac71f2a.jpg",
+              "https://d2xsxph8kpxj0f.cloudfront.net/310519663463855860/5JYUyBvQa2GUNcqbsccVam/effetto-cimento-real_a6e8f9b1.jpg",
             ].map((img, i) => (
               <div key={i} className="rounded-sm overflow-hidden" style={{ border: "1px solid rgba(201,162,39,0.2)" }}>
                 <img src={img} alt={`Antimuffa ${i + 1}`} className="w-full h-20 object-cover" />

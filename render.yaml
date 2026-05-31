@@ -11,6 +11,8 @@ services:
     healthCheckPath: /
     autoDeployTrigger: commit
     envVars:
+      - key: NODE_VERSION
+        value: "22"
       - key: NODE_ENV
         value: production
       - key: BUILT_IN_FORGE_API_KEY
